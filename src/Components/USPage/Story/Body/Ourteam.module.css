@@ -1,0 +1,23 @@
+.OurteamSec{
+    height: 700px;
+    margin-top: 170px;
+    background-color: #040927;
+}
+.textOurteam{
+    text-align: center;
+    font-size: 40px;
+    color: white;
+    margin:50px auto 170px auto ;
+}
+@media screen and (min-width: 320px) and (max-width: 1197px) {
+    .OurteamSec{
+        height: auto;
+        margin: auto auto 5rem auto ;
+    }
+    .Cards{
+        margin: auto;
+
+    }
+
+
+}

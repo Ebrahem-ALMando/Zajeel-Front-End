@@ -1,0 +1,25 @@
+.TripsSec{
+    height: auto;
+    background-color: #14165d;
+
+}
+.textTrips{
+    text-align: center;
+    font-size: 40px;
+    color: white;
+    margin:50px auto 5rem auto ;
+}
+@media screen and (min-width: 320px) and (max-width: 1197px) {
+    .textTrips{
+
+        font-size: 30px;
+
+    }
+    .TripsSec{
+        height: auto;
+        margin: auto auto 5rem auto ;
+    }
+    .Cards{
+        margin: auto;
+    }
+}

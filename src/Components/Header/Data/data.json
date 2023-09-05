@@ -1,0 +1,23 @@
+{
+  "menu": [
+    {
+      "title": "الرئيسية",
+      "link": "/home"
+
+    },
+    {
+      "title": "عن الشركة",
+      "link": "/about"
+    },
+    {
+      "title": "الرحلات",
+      "link": "/trips"
+
+    },
+    {
+      "title": "تواصل معنا",
+      "link": "/contactus"
+    }
+
+  ]
+}

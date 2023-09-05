@@ -1,0 +1,125 @@
+.bgVid{
+   position: absolute;
+    bottom: 0;
+    left: 0px;
+    top: 80px;
+    width: 100%;
+}
+@media (min-aspect-ratio: 16/9) {
+    .bgVid{
+        width: 100%;
+        height: auto;
+
+    }
+}
+@media (max-aspect-ratio: 16/9) {
+    .bgVid{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    /*    width:100%;
+        height: 100%;
+        margin: auto;*/
+        object-fit: cover;
+    }
+}
+.banner {
+
+    padding: 175px 0 100px 0;
+    /*background-image: url('/public/assets/img/Group 1.png');*/
+    /*background-position: top center;*/
+  /*  background-size: cover;*/
+  /*  background-repeat: no-repeat;*/
+    height: 1000px;
+}
+
+.home{
+
+    position: relative;
+    top: 100px;
+    font-size: 30px;
+
+
+}
+.content-home{
+     text-align: center;
+    width: 450px;
+    height: 450px;
+    background-color: rgba(6, 11, 45, 0.94);
+    border-radius: 50%;
+    padding-top: 10%;
+
+}
+.home .text-four{
+/*    position: relative;
+    top: -10px;
+    left: -70px;
+    height: 45px;*/
+    font-size:23px;
+   /* text-align:center;*/
+}
+.content {
+font-size: 28px;
+  position: relative;
+  top: 300px;
+  left: 440px;
+  height: 45px;
+  width: 550px;
+
+
+}
+.content .line {
+    position: relative;
+
+    left: 85px;
+    height: 45px;
+
+
+}
+.content .text-four{
+    position: relative;
+    top: -10px;
+    left: -70px;
+    height: 45px;
+    font-size:19px;
+    text-align:center;
+}
+@media screen and (min-width: 320px) and (max-width: 1080px) {
+    .banner {
+        /*background-image: url('/public/assets/img/Group 1.png');*/
+        /*background-size: 800px,600px;*/
+
+    }
+    .home{
+
+        top: 50px;
+        font-size: 20px;
+    }
+    .content-home{
+        width: 95%;
+        height: 350px;
+        margin: auto;
+        padding: 2rem;
+
+    }
+    .home .text-four{
+        margin: auto;
+        font-size:12px;
+        width: 70%;
+    }
+    .home .line {
+        margin: auto;
+    }
+
+    .content .text-four{
+        top: -10px;
+        margin: auto;
+    }
+    .content-home .line {
+        position: relative;
+        margin: auto;
+        width: 70%;
+    }
+}

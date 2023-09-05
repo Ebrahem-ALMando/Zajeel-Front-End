@@ -1,0 +1,93 @@
+.clients{
+    margin-top: 10rem;
+
+}
+.content-client{
+    text-align: center;
+}
+.content-client .text-one{
+    font-size: 28px;
+    color:#2AA7A7 ;
+
+}
+.content-client .text-tow{
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+.Clients{
+    text-align: center;
+
+}
+/*.colm{*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    flex-direction: row;*/
+/*    flex-wrap: wrap;*/
+/*    margin: auto;*/
+/*}*/
+.content-clients{
+    margin:13rem auto;
+    text-align: center;
+}
+.content-clients .text-one {
+
+    font-size: 60px;
+    color:#2AA7A7 ;
+    margin: auto;
+}
+
+.content-clients .text-tow {
+    font-size: 20px;
+}
+.content-clients button {
+    margin: 1rem auto;
+    font-size: 20px;
+    background-color:#2AA7A7 ;
+    color: white;
+    border: none;
+    letter-spacing: 1px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 1080px) {
+    /*.Clients{*/
+    /*    margin: 0 auto 0px -15px;*/
+    /*}*/
+    .Clients img{
+        width: 100%;
+    }
+    .content-client{
+        position: relative;
+        top: -280px;
+        text-align: center;
+        margin:1rem auto;
+    }
+    .content-client .text-one{
+        font-size: 22px;
+    }
+    .content-client .text-tow{
+        font-size: 12px;
+    }
+    .content-clients{
+        position: relative;
+        top: -100px;
+        margin: auto;
+        text-align: center;
+    }
+    .content-clients-text{
+        margin:1rem auto;
+    }
+    .content-clients .text-one {
+        font-size: 25px;
+    }
+    .content-clients .text-tow {
+        font-size: 13px;
+    }
+    .content-clients button {
+        font-size: 13px;
+    }
+    .content-clients img {
+        width: 100%;
+        margin: auto;
+    }
+}

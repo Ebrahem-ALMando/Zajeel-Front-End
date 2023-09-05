@@ -1,0 +1,127 @@
+.textHeader{
+    position: relative;
+    font-size: 40px;
+    letter-spacing: 2px;
+    text-align: center;
+    top: 15rem;
+    text-shadow: 4px 3px 7px rgba(255, 255, 255, 0.5);
+    filter: blur(0.5px);
+}
+.textHeaderChild{
+    text-align: center;
+    position: relative;
+    font-size: 25px;
+    letter-spacing: 2px;
+    top: 14rem;
+    text-shadow: 4px 3px 7px rgba(255, 255, 255, 0.5);
+    filter: blur(0.5px);
+}
+
+.text{
+    margin: 8rem auto 3rem auto;
+    font-size: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.rowVid{
+    margin: 10rem auto auto auto;
+}
+.textVideo{
+    font-size: 19px;
+    text-transform: uppercase;
+
+}
+.vidC{
+    position: relative;
+    top: -80px;
+    padding: 2rem;
+}
+.topImg{
+    background: url("/public/assets/img/PortfolioPage/Vector Smart Object.png");
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+    margin-bottom: -300px;
+    width: 100%;
+}
+@media screen and (min-width: 1246px) and (max-width: 1286px) {
+    .textHeader{
+        top: 13rem;
+    }
+    .textHeaderChild{
+        top: 12rem;
+    }
+}
+@media screen and (min-width: 320px) and (max-width: 1246px) {
+
+    .textHeader{
+        top: 12rem;
+        font-size: 35px;
+    }
+    .textHeaderChild{
+        top: 11rem;
+        font-size: 20px;
+    }
+    .Img{
+
+        width: max-content;
+        margin:5rem auto;
+    }
+    .textVideo{
+        font-size: 15px;
+        margin: auto auto 3rem auto;
+        text-align: center;
+    }
+    .vidC{
+        width:100%;
+
+        margin: 0 auto -23rem 0
+    }
+    .topImg{
+
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin-bottom: -300px;
+        margin-top: 16rem;
+        width: 100%;
+    }
+}
+@media screen and (min-width: 320px) and (max-width: 1115px) {
+
+    .textHeader{
+
+        font-size: 25px;
+    }
+    .textHeaderChild{
+
+        font-size: 15px;
+    }
+    .Img{
+
+        width: 95%;
+        margin:-9rem auto auto auto;
+    }
+    .text{
+       font-size:15px;
+
+    }
+    .textVideo{
+        font-size: 15px;
+        margin: auto ;
+        text-align: center;
+    }
+    .vidC{
+
+        width:100%;
+        margin: 5rem auto auto auto ;
+    }
+    .topImg{
+
+        background-size: contain;
+        background-repeat: no-repeat;
+        margin-bottom: -340px;
+        margin-top: 0;
+        width: 100%;
+    }
+}

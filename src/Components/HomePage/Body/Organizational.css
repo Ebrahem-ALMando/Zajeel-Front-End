@@ -1,0 +1,67 @@
+.organizational {
+
+    margin-top: 0;
+    padding: 175px 0 100px 0;
+    background-image: url('/public/assets/img/HomePage/Group 2.png');
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 1000px;
+
+}
+.content-organizational {
+    text-align: center;
+    position: relative;
+    top: 50px;
+    font-size: 30px;
+/*    letter-spacing: 3.6px;*/
+    color: #ffffff;
+    text-transform: uppercase;
+}
+.content-organizational .text-organizational{
+    position: relative;
+    font-size: 45px;
+
+}
+.content-organizational .description{
+    position: relative;
+    font-size: 20px;
+    top: 300px;
+}
+@media screen and (min-width: 320px) and (max-width: 1080px) {
+    .organizational {
+        text-align: center;
+        background-position: center;
+        background-size: contain ;
+        background-repeat: no-repeat;
+        background-color: #060b2d;
+        font-size: 10px;
+        margin: auto;
+    }
+    .content-organizational {
+        top: 235px;
+        font-size: 10px;
+        margin: auto;
+    }
+
+    .content-organizational .text-join{
+
+        position: relative;
+        top: -70px;
+        font-size: 10px;
+        margin: auto;
+    }
+    .content-organizational .text-organizational{
+
+        position: relative;
+        top: -50px;
+        font-size: 20px;
+        margin: auto;
+    }
+    .content-organizational .description{
+        font-size: 10px;
+        position: absolute;
+        top: 180px;
+        margin: auto;
+    }
+}

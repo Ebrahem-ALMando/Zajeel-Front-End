@@ -1,0 +1,34 @@
+/*---------------Partner--------------*/
+
+.PAinputImg_1{
+    background-image: url("/public/assets/img/TogetherPage/Partner/Input_1.png");
+}
+.PAinputImg_2{
+    background-image: url("/public/assets/img/TogetherPage/Partner/Input_2.png");
+}
+.PAinputImg_3{
+    background-image: url("/public/assets/img/TogetherPage/Partner/Input_3.png");
+}
+.PAinputImg_4{
+    background-image: url("/public/assets/img/TogetherPage/Partner/Input_4.png");
+}
+.PAinputImg_5{
+    background-image: url("/public/assets/img/TogetherPage/Partner/Input_5.png");
+}
+
+.PAinputImg_4::placeholder,.PAinputImg_5::placeholder{
+    padding-left: 40px;
+}
+@media screen and (min-width: 320px) and (max-width: 752px) {
+    .PAinputImg_4::placeholder{
+        text-wrap: initial;
+        font-size: 13.8px;
+
+    }
+    .PAinputImg_4{
+        padding-bottom: 23px;
+        vertical-align: top;
+    }
+
+}
+/*---------------End Partner--------------*/

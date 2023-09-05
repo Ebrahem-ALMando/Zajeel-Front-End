@@ -1,0 +1,195 @@
+.grow {
+    padding: 175px 0 100px 0;
+    background-image: url('/public/assets/img/HomePage/Grow.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 1000px;
+}
+.growImage{
+    margin-top: 33rem;
+    padding: 175px 0 100px 0;
+    background-image: url('/public/assets/img/HomePage/Group 3.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 1000px;
+}
+/*.content-grow-effect {*/
+/*position: relative;*/
+/*    top: 380px;*/
+/*    left: 215px;*/
+/*    height: 45px;*/
+/*    width: 70%;*/
+/*    font: normal normal normal 50px/40px Outfit;*/
+/*    letter-spacing: 3.6px;*/
+/*    color: #ffffff;*/
+/*    text-transform: uppercase;*/
+/*    text-shadow: 50px 2px 50px #2AA7A7;*/
+/*    background-color:#2AA7A7;*/
+/*    filter: blur(28px);*/
+/*    opacity: 0.9;*/
+/*    border-radius: 100px;*/
+/*}*/
+.content-grow img{
+    width: 100%;
+}
+.content-grow{
+    position: relative;
+    top: 150px;
+    /*left: 140px;*/
+
+    width: 100%;
+    font-size: 46px;
+    /*letter-spacing: 3.6px;*/
+    color: #ffffff;
+    text-transform: uppercase;
+    text-align: center;
+}
+.content-grow .text-one{
+    position: relative;
+    top: -90px;
+    /*left: 40px;*/
+    width: 100%;
+    font-size: 46px;
+}
+.content-grow .text-tow{
+    position: relative;
+    top: -110px;
+    /*left: 140px;*/
+    width: 100%;
+    font-size: 46px;
+}
+.content-grow .text-three{
+    position: relative;
+    top: -70px;
+    /*left: 70px;*/
+    width: 100%;
+    font-size: 15px;
+
+}
+.content-grow-section-tow{
+    position: relative;
+    /*left: 100px;*/
+    top: 35rem;
+
+}
+.content-grow-section-tow .video-section-tow{
+    height: 420px;
+    width: 450px;
+    position: relative;
+    top: -80px;
+}
+.content-grow-section-tow .text-one{
+
+    color: #9D20B1;
+    font-size: 50px;
+}
+.content-grow-section-tow .text-tow{
+
+
+    font-size: 25px;
+}
+.content-grow-section-tow .text-three{
+
+
+    font-size: 17px;
+    color: #ffffff;
+}
+.content-grow-section-tow button{
+
+    color: white;
+    /*letter-spacing: 2.4px;*/
+    font-size: 17px;
+    background-color: #2AA7A7;
+    border: none;
+    height: 37px;
+
+}
+@media screen and (min-width: 320px) and (max-width: 1080px) {
+    .grow {
+
+        background-size:contain ;
+        width: 100%;
+        margin: auto;
+    }
+    .content-grow{
+        text-align: center;
+        /*top: 300px;*/
+        /*left: 10px;*/
+        height: 45px;
+          width: 100%;
+        margin: auto;
+
+    }.content-grow .text-one{
+         top: -40px;
+         /*left: 10px;*/
+         height: 45px;
+         width: auto;
+         font-size: 12px;
+
+     }
+    .content-grow .text-tow{
+        position: relative;
+        top: -70px;
+        /*left:10px;*/
+        margin: auto;
+        font-size: 12px;
+
+    }
+    .content-grow .text-three{
+        position: relative;
+        top: -58px;
+        /*left:10px;*/
+        font-size: 10px;
+        margin: auto;
+
+    }
+    .content-grow-section-tow{
+        position: relative;
+        top: 50rem;
+        margin: auto;
+        text-align: center;
+
+    }
+    .content-grow-section-tow-text{
+ /*       position: relative;
+        !*left: -20px;*!
+        top: 550px;
+*/
+       margin: auto;
+
+    }
+    .content-grow-section-tow .video-section-tow{
+        height: 291px;
+        width: 272px;
+        margin: auto;
+        position: relative;
+        top: 0px;
+    }
+    .content-grow-section-tow .text-one{
+    /*    position: relative;
+        top: 2rem;
+        !*left: 2.5rem;*!
+        */
+        padding-top: 2rem;
+        text-align: center;
+        color: #9D20B1;
+        font-size: 20px;
+        margin: auto;
+    }
+    .content-grow-section-tow .text-tow{
+        font-size: 17px;
+        padding: 0.5rem 2rem ;
+        margin:  auto;
+    }
+    .content-grow-section-tow .text-three{
+        padding: 1rem ;
+        font-size: 12px;
+        color: #ffffff;
+
+        margin: auto;
+    }
+
+
+
+}

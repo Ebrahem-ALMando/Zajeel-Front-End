@@ -1,0 +1,39 @@
+.card-{
+    margin-bottom: 3rem;
+    /*transition: border 0.2s ease;*/
+/*    transition: border-left-color 0.8s ease ; !* تأثير الانتقال بمدة 0.5 ثانية بسلاسة *!*/
+
+
+}
+.card-:hover{
+
+    border: 1px solid;
+    border-image: linear-gradient(to top,#ffffff, #9D20B1, #ffffff) 1;
+    background-clip:  content-box,border-box;
+    /*transition-delay: 0.2s; !* تأخير التأثير لمدة 0.5 ثانية *!*/
+    cursor: default;
+
+}
+/*.first{
+    border: 1px solid;
+    border-image: linear-gradient(to top,#ffffff, #9D20B1, #ffffff) 1;
+    background-clip:  content-box,border-box;
+}*/
+p,h3{
+color: white;
+}
+ h2{
+    color:#2AA7A7 ;
+}
+
+@media screen and (min-width: 320px) and (max-width: 1080px) {
+
+    .card-{
+
+        width: 96%;
+        margin: 2%;
+        font-size: 12px;
+        font-family: 'Josefin Sans', sans-serif;
+    }
+
+}

@@ -1,0 +1,46 @@
+.rowHeader{
+    margin: 100px auto;
+}
+.textContent{
+    font-size: 23.5px;
+    margin: 0 ;
+    text-align: left;
+    text-transform: capitalize;
+
+}
+.img{
+    margin: auto -1rem;
+
+}
+.imgApproach{
+    width: 100%;
+}
+.textContentRight{
+    font-size: 23.5px;
+    margin: 0 4.3rem ;
+    text-align: right;
+    text-transform: capitalize;
+
+}
+
+@media screen and (min-width: 320px) and (max-width: 1080px) {
+
+.classesTextHeader{
+    font-size:25px ;
+}
+    .rowHeader{
+        margin: -9rem auto 5rem auto;
+    }
+    .imgApproach{
+        margin: auto;
+        width: 100%;
+    }
+    .textContent p,.textContent h3{
+        text-align: left;
+        margin: 1rem 1rem;
+    }
+    .textContentRight p,.textContentRight h3{
+        text-align: right;
+        margin: 1rem 1rem;
+    }
+}

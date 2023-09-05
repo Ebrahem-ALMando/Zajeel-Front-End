@@ -1,0 +1,121 @@
+.textHeader{
+    position: relative;
+    font-size: 40px;
+    letter-spacing: 2px;
+    text-align: center;
+    top: 13rem;
+    text-shadow: 4px 3px 7px rgba(255, 255, 255, 0.5);
+    filter: blur(0.5px);
+}
+.textHeaderChild{
+    text-align: center;
+    text-wrap: inherit;
+    padding: 35px;
+    position: relative;
+    font-size: 27px;
+    letter-spacing: 2px;
+    top: 10rem;
+    text-shadow: 4px 3px 7px rgba(255, 255, 255, 0.5);
+    filter: blur(0.5px);
+    text-transform: uppercase;
+}
+.Img,.imgBody{
+    margin:5rem  auto;
+}
+.text{
+    margin: 3rem auto 3rem auto;
+    font-size: 21px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.textColor{
+    color: #2AA7A7;
+    font-weight: bold;
+}
+.rowVid{
+    margin: 10rem auto auto auto;
+}
+.textVideo{
+    font-size: 19px;
+    text-transform: uppercase;
+
+}
+.vidC{
+    position: relative;
+    top: -110px;
+    width: 120%;
+}
+@media screen and (min-width: 1246px) and (max-width: 1286px) {
+    .textHeader{
+        font-size: 30px;
+        top: 13rem;
+    }
+    .textHeaderChild{
+        top:10rem;
+        font-size: 21px;
+    }
+}
+@media screen and (min-width: 320px) and (max-width: 1246px) {
+
+    .textHeader {
+        top: 11rem;
+        font-size: 30px;
+    }
+    .textHeaderChild {
+        top: 8rem;
+        font-size: 21px;
+        margin: auto;
+    }
+    .Img{
+        width: max-content;
+        margin: auto auto 5rem auto;
+    }
+    .imgBody{
+        width: 95%;
+        margin: 5rem auto ;
+    }
+    .textVideo{
+        font-size: 15px;
+
+        text-align: center;
+    }
+    .vidC{
+        width:100%;
+
+
+    }
+
+}
+@media screen and (min-width: 320px) and (max-width: 1115px) {
+
+    .textHeader {
+        font-size: 25px;
+    }
+    .textHeaderChild {
+        font-size: 15px;
+       /* width: min-content;*/
+    }
+    .Img{
+
+        width: 95%;
+        margin:-14rem auto auto auto;
+    }
+    .text{
+        font-size: 15px;
+    }
+    .textVideo{
+        font-size: 15px;
+        margin:auto auto 5rem auto ;
+        text-align: center;
+
+    }
+    .vidC{
+
+        width:100%;
+        display: flex;
+
+        margin: 5rem auto auto auto ;
+
+    }
+}

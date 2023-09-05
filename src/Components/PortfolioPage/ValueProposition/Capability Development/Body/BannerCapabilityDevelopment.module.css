@@ -1,0 +1,135 @@
+.Img {
+    margin: 5rem auto;
+}
+.vidioBody{
+    position: relative;
+    width: 100%;
+}
+.TextFooter{
+    background: url("/public/assets/img/PortfolioPage/TextFooter.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center bottom;
+    width: 90%;
+    margin: 7rem auto;
+    height: 15rem;
+}
+.textF{
+    width: 90%;
+    margin: 5rem auto;
+    text-align: center;
+    font-size: 21px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.textHeaderChild{
+    text-align: center;
+    text-wrap: inherit;
+    padding: 35px;
+    position: relative;
+    font-size: 21.5px;
+    letter-spacing: 2px;
+    top: 10rem;
+    text-shadow: 4px 3px 7px rgba(255, 255, 255, 0.5);
+    filter: blur(0.5px);
+    text-transform: uppercase;
+}
+@media screen and (min-width: 1246px) and (max-width: 1286px) {
+    .textHeader{
+        font-size: 30px;
+        top: 13rem;
+    }
+    .textHeaderChild{
+        top:10rem;
+        font-size: 19px;
+
+
+    }
+}
+@media screen and (min-width: 320px) and (max-width: 1246px) {
+    .textHeader{
+        margin: -14rem auto auto auto;
+    }
+    .textHeaderChild {
+        top: 8rem;
+        font-size:16px;
+        width: min-content;
+        margin: auto;
+    }
+    .Img{
+        width: 95%;
+        margin:auto auto 3rem auto ;
+    }
+    .TextFooter{
+        background-size: contain;
+        width: 98%;
+    }
+    .textF{
+        margin: 9.5rem auto auto auto;
+        text-align: center;
+        font-size: 11.5px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .vidioBody{
+       margin: 3rem auto -2rem auto;
+    }
+}
+@media screen and (min-width: 320px) and (max-width: 514px) {
+
+    .TextFooter{
+        display: flex;
+        background-size: contain;
+        width: 98%;
+        margin: auto;
+        align-content: flex-end;
+        flex-wrap: wrap;
+    }
+
+}
+@media screen and (min-width: 320px) and (max-width: 375px) {
+
+    .textF{
+
+        margin:  0.5rem auto;
+        font-size: 7px;
+    }
+
+}
+@media screen and (min-width: 375px) and (max-width: 425px) {
+
+    .textF{
+        margin:  0.5rem auto;
+        font-size: 9px;
+    }
+}
+@media screen and (min-width: 419px) and (max-width: 455px) {
+
+    .textF{
+        margin:  1rem auto;
+        font-size: 9px;
+    }
+    .vidioBody{
+        margin: 3rem auto -5rem auto;
+    }
+}
+@media screen and (min-width: 476px) and (max-width: 514px) {
+
+    .textF{
+
+        margin:  1rem auto;
+        font-size: 11px;
+    }
+    .vidioBody{
+        margin: 3rem auto -5rem auto;
+    }
+}
+@media screen and (min-width: 995px) and (max-width: 1246px) {
+
+    .textF{
+        margin:  5rem auto;
+        font-size: 20px;
+    }
+
+}

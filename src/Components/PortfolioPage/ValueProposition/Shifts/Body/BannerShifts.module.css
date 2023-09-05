@@ -1,0 +1,110 @@
+/*
+.textHeaderChild{
+    text-align: center;
+    text-wrap: inherit;
+    padding: 35px;
+    position: relative;
+    font-size: 35px;
+    letter-spacing: 2px;
+    top: 10rem;
+    text-shadow: 4px 3px 7px rgba(255, 255, 255, 0.5);
+    filter: blur(0.5px);
+}*/
+
+.Img {
+    margin: 5rem auto;
+}
+.text{
+    text-align: left;
+}
+.textBody{
+    display: inline-block;
+    margin: auto;
+    font-size: 18px;
+    text-wrap: inherit;
+
+}
+.textHeaderChild{
+    font-size: 35px;
+}
+.img{
+    margin: auto  1rem auto auto;
+
+}
+.rowImgText{
+  margin-top: 2rem;
+    justify-content: center;
+
+}
+.textMeasuring{
+    margin: 6rem auto -4.5rem auto;
+}
+.cardL{
+
+    height: 50vh;
+    align-items: center;
+}
+.imgCard{
+    margin: auto 1rem;
+}
+.cardR{
+    height: 50vh;
+    align-items: center;
+    text-align: right;
+    margin: 0 4.3rem ;
+}
+.textContent{
+    font-size: 23.5px;
+    margin: 0 1rem;
+}
+.titleCard{
+    color: #2AA7A7;
+    font-weight: bold;
+    font-size: 40px;
+
+}
+
+@media screen and (min-width: 320px) and (max-width: 1246px) {
+    .textHeader{
+        margin: -15rem auto auto auto ;
+    }
+    .textHeaderChild{
+        font-size: 25px;
+    }
+    .Img {
+        width: 95%;
+        margin: 1rem auto 3rem auto;
+    }
+    .img{
+        width: max-content;
+        margin: auto;
+    }
+    .textBody{
+
+        margin: auto ;
+        font-size: 13px;
+    }
+}
+@media screen and (min-width: 429px) and (max-width: 576px) {
+
+    .rowImgText{
+        margin: auto;
+     justify-content: start;
+    }
+}
+@media screen and (min-width: 320px) and (max-width: 429px) {
+
+    .rowImgText{
+        margin: auto;
+        justify-content: start;
+    }
+    .textBody{
+        display: block;
+        margin: auto ;
+        font-size: 11.5px;
+    }
+    .img{
+        width: 33px;
+        margin: 0.7rem auto;
+    }
+}

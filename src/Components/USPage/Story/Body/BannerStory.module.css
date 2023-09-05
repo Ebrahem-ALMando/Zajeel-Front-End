@@ -1,0 +1,145 @@
+/*.bannerStory{*/
+/*    padding: 175px 0 100px 0;*/
+/*    height: 800px;*/
+/*}*/
+.bgVid{
+    position: absolute;
+    bottom: 0;
+    left: 0px;
+    top: 80px;
+    width: 100%;
+    z-index: -10;
+}
+@media (min-aspect-ratio: 16/9) {
+    .bgVid{
+        width: 100%;
+        height: auto;
+    }
+}
+@media (max-aspect-ratio: 16/9) {
+    .bgVid{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+.ourStory{
+    height: 800px;
+    margin: 20px;
+}
+ .contentStory {
+     position: relative;
+     font-size: 40px;
+     letter-spacing: 2px;
+     text-align: center;
+     top: 25rem;
+     text-shadow: 4px 3px 7px rgba(255, 255, 255, 0.5);
+     filter: blur(0.5px);
+
+}
+.rowheader{
+    margin: 200px auto;
+}
+ .textHeader{
+     font-size: 25px;
+     text-align: center;
+ }
+
+.vid15{
+    position: relative;
+    top: -80px;
+    padding: 2rem;
+}
+.textHeaderTow{
+    margin: 2rem 5rem;
+    font-size: 20px;
+
+}
+.rowbackground{
+    height: 600px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    background-image: url("/public/assets/img/UsPage/Vector Smart Object.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: opac 3s infinite;
+}
+@keyframes opac {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.btnReq{
+    position: relative;
+    top: 355px;
+    z-index: 10;
+    font-size: 25px;
+    letter-spacing: 2px;
+    background-color: #060B2D;
+    color:white ;
+    border: 1px solid #707070;
+    height: 56px;
+    width: 25%;
+
+}
+@media screen and (min-width: 1080px) and (max-width: 1255px) {
+    .contentStory {
+        margin: auto;
+        font-size: 30px;
+        top: -4rem;
+    }
+}
+@media screen and (min-width: 320px) and (max-width: 1080px) {
+
+    .rowheader{
+        margin:  auto;
+    }
+      .contentStory {
+       margin: auto;
+       font-size: 30px;
+       top: -4rem;
+    }
+    .textHeader{
+        margin:  auto;
+        font-size: 18px;
+
+    }
+    .vid15{
+        width: 300px;
+        margin: 8rem auto auto 0 ;
+    }
+    .textHeaderTow{
+        font-size: 15px;
+         margin: auto;
+         text-align: center;
+    }
+    .rowbackground{
+         margin:  auto;
+        background-size: 600px;
+    }
+    .btnReq{
+       font-size: 15px;
+        width: auto;
+        margin: auto;
+        opacity: 0.8;
+
+    }
+
+}
+@media screen and (min-width: 425px) and (max-width: 1080px) {
+    .rowbackground{
+        margin:  auto;
+        background-size: contain;
+    }
+
+}
