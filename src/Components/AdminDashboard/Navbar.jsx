@@ -8,12 +8,7 @@ function Navbar() {
                 اهلا بك
                 <span> ابراهيم </span>
             </Text>
-          {/*  <InputContainer>
-                <Icon>
-                    <FiSearch />
-                </Icon>
-                <Input type="text" placeholder="البحث عن مستخدم" />
-            </InputContainer>*/}
+
         </NavbarContainer>
     );
 }
@@ -32,7 +27,7 @@ const NavbarContainer = styled.nav`
 const Text = styled.h1`
   span {
     font-weight: 500;
-    color: #484258;
+    color: #e0d8f5;
   }
   @media screen and (min-width: 320px) and (max-width: 1080px) {
     margin-top: 1rem;

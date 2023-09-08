@@ -8,7 +8,7 @@ import "./NavBar.css";
 import {NavDropdown} from "react-bootstrap";
 import menuData from "./Data/data.json";
 
-const NavBar = () => {
+const NavBar = (props) => {
   const [scrolled, setScrolled] = useState(false);
   const [activeLink, setActiveLink] = useState("home");
   const [lan, setLan] = useState("AR");
@@ -94,7 +94,20 @@ const NavBar = () => {
                     key={index} title={item.title} link={item.link} submenu={item.submenu}/>
               ))
             }
+              <Link
+                  className="text-decoration-none m-auto  link-light " to={"/dashboard"}
+              >
+              <button className="btn btn-outline-light btnLog "
+              onClick={()=>{
+                  localStorage.setItem('userType','admin')
+                  props.typeUser("admin");
+              }}
+              >
+                  تسجيل الدخول
+              </button>
+              </Link>
           </Nav>
+
             <span className="navbar-text me-lg-5">
                         <div className="social-icon ">
                             <a

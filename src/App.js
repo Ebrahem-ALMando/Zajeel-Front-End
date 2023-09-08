@@ -20,22 +20,31 @@ import Clients from "./Components/YouPage/Clients/Clients";
 import Testimonials from "./Components/YouPage/Testimonials/Testimonials";
 import ContactUsPage from "./Components/Contact Us/ContactUsPage";*/
 import ContactUSContext from "./Components/Context/Context";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 /*import Blog from "./Components/BlogPage/Blog";
 import BlogPage from "./Components/BlogPage/BlogPageContent/BlogPage";
 import Expert from "./Components/TogetherPage/Expert/Expert";
 import Partner from "./Components/TogetherPage/Partner/Partner";
 import Intern from "./Components/TogetherPage/Intern/Intern";*/
 import Slider from "./Components/Home/SliderHome/Slider";
-import CardTrips from "./Components/Home/Trips/Cards/CardTrips";
+
 import Home from "./Components/Home/Home";
+import {BrowserRouter} from "react-router-dom";
+import AppAdmin from "./AppAdmin";
 function App() {
         const [isContactus,setIsContactus]=useState(false)
         const isContactusValue={isContactus,setIsContactus};
+        const [userType,setUserType]=useState("gust");
+        useEffect(()=>{
+            setUserType(localStorage.getItem('userType'))
+
+        },[localStorage.getItem('userType')])
   return (
     <>
-        <ContactUSContext.Provider value={isContactusValue}>
-         <NavBar />
+        {userType==="gust"?
+
+            <ContactUSContext.Provider value={isContactusValue}>
+            <NavBar typeUser={setUserType}/>
             <Home/>
             {/*<Slider/>*/}
 
@@ -46,7 +55,7 @@ function App() {
                 buttonText="انطلق الآن"
             />*/}
 
-      {/*  <Routes>
+        {/*  <Routes>
            Home Page
             <Route  path="/home" element={ <HomePage/>} />\
             <Route  path="/" element={ <HomePage/>} />
@@ -77,7 +86,12 @@ function App() {
             <Route  path="/together/partner" element={ <Partner/>} />
         </Routes>
             <Footer />*/}
-        </ContactUSContext.Provider>
+            </ContactUSContext.Provider>:
+
+                <AppAdmin />
+
+        }
+
 
 
     </>

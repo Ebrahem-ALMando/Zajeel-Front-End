@@ -289,4 +289,9 @@ span.navbar-text {
     text-wrap: inherit;
     text-align: center;
   }
+  .btnLog{
+
+    width: 200px;
+    margin:0.5rem auto auto auto;
+  }
 }
