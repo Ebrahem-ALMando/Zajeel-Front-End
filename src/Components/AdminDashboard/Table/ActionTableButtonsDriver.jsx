@@ -9,6 +9,7 @@ import UpdateDriver from "../Drivers/UpdateDriver";
 import DeleteDriver from "../Drivers/DeleteDricer";
 import {AiFillEdit} from "react-icons/ai";
 import {MdDeleteForever} from "react-icons/md";
+import {Modal} from "react-bootstrap";
 
 
 const ActionTableButtonsDriver=(props)=>{
@@ -17,7 +18,11 @@ const ActionTableButtonsDriver=(props)=>{
         setDataDriver(props.Data);
     }, []);
     const [show, setShow] = useState(false);
-    const handleShow = () => setShow(true);
+    const [showDelete, setShowDelete] = useState(false);
+    const handleShow = () =>  setShow(true);
+    const handleClose = () => setShow(false);
+    const handleShowDelete = () =>  setShowDelete(true);
+    const handleCloseDelete = () => setShowDelete(false);
 
         return (
             <td>
@@ -31,19 +36,30 @@ const ActionTableButtonsDriver=(props)=>{
 
                     <AiFillEdit />
                 </button>
-                {show?<UpdateDriver  show={show}  Data={props.Data}/>:null}
-                {/*
-                Btn Delete
+                <Modal  show={show} onHide={handleClose}>
+                    <UpdateDriver
+                        getNewDriverData={props.getNewDriverData}
+                        handleClose={handleClose} Data={props.Data}/>
+                </Modal>
+
+
+
+
+               {/* Btn Delete*/}
                 <button   style={{margin:'1%'}} type="button" className="btn btn-danger"
-                          data-bs-toggle="modal" data-bs-target={"#DeleteModal"+ this.props.echRowID}
+
                           onClick={() => {
-                              this.getUserDetails(this.props.echRowID)
+                            handleShowDelete()
                           }}
 
                 >
 
                     <MdDeleteForever/></button>
-                <DeleteDriver modalID={this.props.echRowID} Data={this.props.Data}/>*/}
+                <Modal  show={showDelete} onHide={handleCloseDelete}>
+                    <DeleteDriver
+                        getNewDriverData={props.getNewDriverData}
+                        handleClose={handleCloseDelete} Data={props.Data}/>
+                </Modal>
 
             </td>
         )

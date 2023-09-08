@@ -95,11 +95,13 @@ const NavBar = (props) => {
               ))
             }
               <Link
-                  className="text-decoration-none m-auto  link-light " to={"/dashboard"}
+                  className="text-decoration-none m-auto  link-light " to={"/"}
               >
               <button className="btn btn-outline-light btnLog "
               onClick={()=>{
                   localStorage.setItem('userType','admin')
+                  localStorage.setItem('activeLink','dashboard')
+
                   props.typeUser("admin");
               }}
               >

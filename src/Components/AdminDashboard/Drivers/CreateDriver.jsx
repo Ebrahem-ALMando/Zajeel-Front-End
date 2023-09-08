@@ -51,25 +51,30 @@ const CreateDriver=props=>{
             DriverAge: ageData,
             DriverExperience:experienceData,
             DriverNote:noteData,
-
-
         }).then((response)=>{
             if(response.status===200){
                 toast.success("تم الانشاء بنجاح");
+                getNewDriverData();
+                handleClose();
+                clearData();
             }else {
                 toast.error("حدث خطأ يرجى اعادة المحاولة");
             }
-
-          /*  setTimeout(()=>{
-               /!* location.reload();*!/
-            },2500)*/
         });
             }
             else {
                 toast.error("يرجى ادخال جميع البيانات");
             }
         }
-
+        const clearData=()=>{
+        setNameData('')
+        setNoteData('')
+        setExperienceData('')
+        setAgeData('')
+        }
+    const getNewDriverData = () => {
+        props.getNewDriverData();
+    };
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     return(

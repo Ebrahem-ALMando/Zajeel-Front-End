@@ -16,7 +16,9 @@ const  TableRow=props=>{
             <td  className="h-50">{props.Data.age}</td>
             <td  className="h-50">{props.Data.experience+" - عام"}</td>
             <td  className="h-50"> {props.Data.note}</td>
-            <ActionTableButtonsDriver echRowID={props.Data.id} Data={props.Data}/>
+            <ActionTableButtonsDriver
+                getNewDriverData={props.getNewDriverData}
+                echRowID={props.Data.id} Data={props.Data}/>
         </tr>
 
     )

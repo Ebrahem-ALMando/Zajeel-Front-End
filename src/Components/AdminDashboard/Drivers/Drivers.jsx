@@ -31,6 +31,9 @@ const Drivers=props=>{
             toast.error('حدث خطأ في الاتصال بالخادم');
         }
     };
+    const getNewDriverData=()=>{
+        getDriverList();
+    }
 /*    const getDriverListSearch = async () => {
         try {
             const response = await axios.post(`${urlDomainApi}/driver_search`, {
@@ -104,10 +107,11 @@ const Drivers=props=>{
 
            <CreateModalContainer>
 
-               <CreateDriver/>
+               <CreateDriver getNewDriverData={getNewDriverData}/>
 
            </CreateModalContainer>
            <Table
+               getNewDriverData={getNewDriverData}
                Col1={"الاسم الكامل"}
                Col2={"تاريخ الميلاد"}
                Col3={"سنوات الخبرة"}

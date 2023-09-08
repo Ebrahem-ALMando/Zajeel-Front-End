@@ -27,7 +27,9 @@ const  Table=(props)=>{
                 // props.data==="لا بوجد بيانات متطابقة"?"":
                 props.data.map((driver,index)=>{
                     return (
-                        <TableRow Data={driver} key={index}/>
+                        <TableRow
+                            getNewDriverData={props.getNewDriverData}
+                            Data={driver} key={index}/>
                     )
                 })
             }

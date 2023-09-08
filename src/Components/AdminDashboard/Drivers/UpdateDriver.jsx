@@ -19,11 +19,14 @@ const UpdateDriver=props=>{
     const [experienceData, setExperienceData] = useState('');
     const [noteData, setNoteData] = useState('');
 
-    const [show, setShow] = useState(props.show);
+
     useEffect(() => {
     setNameData(props.Data.full_name);
-        console.log(props.Data.full_name)
+    setAgeData(props.Data.age);
+    setExperienceData(props.Data.experience);
+    setNoteData(props.Data.note);
     }, []);
+   /* props.onChangeModal*/
 
     const inputDriverName = (event) => {
         setNameData(event.target.value);
@@ -51,43 +54,51 @@ const UpdateDriver=props=>{
             return  false;
         }
     }
-    const createDriverData=async ()=>{
-        if(validateInput()){
-            //Submit Data
-            await axios.post(`${urlDomainApi}/driver`,{
-                DriverName: nameData,
-                DriverAge: ageData,
-                DriverExperience:experienceData,
-                DriverNote:noteData,
+    const updateDriverData = async () => {
+        if (validateInput()) {
+            // البيانات التي تريد تحديثها يجب إرسالها هنا
+            const updatedData = {
+                // اجعل هنا البيانات التي تريد تحديثها
 
+                full_name: nameData,
+                age: ageData,
+                experience: experienceData,
+                note: noteData,
+            };
 
-            }).then((response)=>{
-                if(response.status===200){
-                    toast.success("تم الانشاء بنجاح");
-                }else {
-                    toast.error("حدث خطأ يرجى اعادة المحاولة");
-                }
-
-                /*  setTimeout(()=>{
-                     /!* location.reload();*!/
-                  },2500)*/
-            });
+            await axios.post(`${urlDomainApi}/driver/${props.Data.id}`, updatedData)
+                .then((response) => {
+                    if (response.status === 200) {
+                        toast.success("تم التعديل بنجاح");
+                        getNewDriverData();
+                        handleClose();
+                    } else {
+                        toast.error("حدث خطأ يرجى إعادة المحاولة");
+                    }
+                })
+                .catch((error) => {
+                    console.error("حدث خطأ أثناء إرسال البيانات: ", error);
+                    toast.error("حدث خطأ يرجى إعادة المحاولة");
+                });
+        } else {
+            toast.error("يرجى إدخال جميع البيانات المطلوبة");
         }
-        else {
-            toast.error("يرجى ادخال جميع البيانات");
-        }
-    }
+    };
 
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const getNewDriverData = () => {
+        props.getNewDriverData();
+    };
+    const handleClose = () => {
+        props.handleClose();
+    };
+
     return(
         <>
 
 
-            {/* <div className="modal fade" id={"createModel"} tabIndex="-1" aria-labelledby="exampleModalLabel" >*/}
-            <Modal  show={show} onHide={handleClose}>
 
-                {/*<div className={`modal-content ${styles.modalContent}`}>
+
+                <div className={`modal-content ${styles.modalContent}`}>
                     <div className="modal-content">
                         <div className="modal-header">
                             <button type="button" className={`btn-close ${styles.btnClose}`} data-bs-dismiss="modal" aria-label="Close" onClick={handleClose}></button>
@@ -110,6 +121,7 @@ const UpdateDriver=props=>{
                                         className="form-control"
                                         id="employeeName"
                                         placeholder="الاسم هنا"
+                                        value={nameData??" "}
                                         onChange={inputDriverName}
                                     />
                                 </div>
@@ -125,6 +137,7 @@ const UpdateDriver=props=>{
                                         type="date"
                                         className="form-control"
                                         id="employeeSalary"
+                                        value={ageData??" "}
                                         onChange={inputDriverAge}
                                     />
 
@@ -142,6 +155,7 @@ const UpdateDriver=props=>{
                                         type="number"
                                         className="form-control"
                                         id="experience"
+                                        value={experienceData??" "}
                                         placeholder="الخبرة هنا"
                                         onChange={inputDriverExperience}
                                     />
@@ -152,13 +166,14 @@ const UpdateDriver=props=>{
                                     <label htmlFor="description" className="col-form-label">ملاحظات</label>
                                 </div>
                                 <div className="col-md-8">
-        <textarea
-            className="form-control"
-            id="description"
-            placeholder="الملاحظات هنا"
-            onChange={inputDriverNote}
-        />
-                                </div>
+                                <textarea
+                                    className="form-control"
+                                    id="description"
+                                    placeholder="الملاحظات هنا"
+                                    value={noteData??" "}
+                                    onChange={inputDriverNote}
+                                />
+                                                        </div>
                             </div>
                             <div className="col-md-4 offset-md-4 w-100" style={{ marginBottom: '1rem' }}>
                                 <button
@@ -166,9 +181,9 @@ const UpdateDriver=props=>{
                                     className={stylesTBUT.tripButton}
 
                                     data-bs-dismiss="modal"
-                                    onClick={createDriverData}
+                                    onClick={updateDriverData}
                                 >
-                                    انشاء
+                                    تعديل
                                 </button>
                             </div>
                         </form>
@@ -178,9 +193,9 @@ const UpdateDriver=props=>{
                         <button type="button" className="btn btn-dark w-100" data-bs-dismiss="modal" onClick={handleClose}>اغلاق</button>
 
                     </div>
-                </div>*/}
+                </div>
 
-            </Modal>
+
         </>
     )
 }

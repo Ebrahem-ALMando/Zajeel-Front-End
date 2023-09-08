@@ -1,47 +1,69 @@
 import React from "react";
 import axios from "axios";
 import {toast} from "react-toastify";
+import {urlDomainApi} from "../../../URL_DomainApi";
 
-const DeleteDriver=props=>{
-   /* const deleteDriver=(id)=>{
-        axios.post('api/delete/user/data',{
-            userId:id
-        }).then((response)=>{
-            console.log(response.data)
+const DeleteDriver= props=>{
+    const deleteDriver=async ()=>{
+        await axios.delete(`${urlDomainApi}/driver/${props.Data.id}`
+        ).then((response)=>{
+            getNewDriverData();
+            handleClose()
             toast.error("تم الحذف بنجاح");
-            setTimeout(()=>{
-                location.reload();
-            },2500)
+
         })
-    }*/
+    }
+    const getNewDriverData = () => {
+        props.getNewDriverData();
+    };
+    const handleClose = () => {
+        props.handleClose();
+    };
     return(
 
-        <div className="modal fade" id={"DeleteModal"+props.modalID} tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div className="modal-dialog">
-                <div className="modal-content">
-                    <div className="modal-header">
-                        <h5 className="modal-title text-black" id="exampleModalLabel">
 
-                            حذف مستخدم
-                        </h5>
-                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div className="modal-body text-black">
-                        <strong> هل تريد حذف هذا المستخدم : <span className="text-danger"
-                        > {props.Data.name} </span>؟</strong>
-                    </div>
-                    <div className="modal-footer">
-                        <button type="button" className="btn btn-danger" data-bs-dismiss="modal"
-                                onClick={()=>{
-                                    /*deleteUser(props.modalID)*/
-                                }}
-                        >حذف</button>
-                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
-
-                    </div>
-                </div>
+        <div className="modal-content">
+            <div className="modal-header">
+                <button
+                    type="button"
+                    className="btn-close float-start"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                    onClick={handleClose}
+                ></button>
+                <h5 className="modal-title text-center w-100" id="exampleModalLabel">
+                    حذف سائق
+                </h5>
+            </div>
+            <div className="modal-body text-black">
+                <p className="text-center">
+                    هل تريد حذف هذا السائق:{" "}
+                    <span className="text-danger">{props.Data.full_name}</span>؟
+                </p>
+            </div>
+            <div className="modal-footer">
+                <button
+                    type="button"
+                    className="btn btn-danger w-100"
+                    data-bs-dismiss="modal"
+                    onClick={() => {
+                        deleteDriver();
+                    }}
+                >
+                    حذف
+                </button>
+                <button
+                    type="button"
+                    className="btn btn-dark w-100"
+                    onClick={handleClose}
+                >
+                    إغلاق
+                </button>
             </div>
         </div>
+
+
+
     )
 }
 export default DeleteDriver;
