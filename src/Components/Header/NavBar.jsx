@@ -7,12 +7,27 @@ import { Link } from "react-router-dom";
 import "./NavBar.css";
 import {NavDropdown} from "react-bootstrap";
 import menuData from "./Data/data.json";
+import axios from "axios";
+import {BiSolidDashboard} from "react-icons/bi";
 
 const NavBar = (props) => {
   const [scrolled, setScrolled] = useState(false);
   const [activeLink, setActiveLink] = useState("home");
   const [lan, setLan] = useState("AR");
+    const [userData, setUserData] = useState("");
+    const getIdUser = () => {
+        axios.get(`http://127.0.0.1:8000/get/id/user/data`).then((response) => {
+            if (response.data) {
+                setUserData(response.data);
+                console.log(response.data)
+            } else {
+                setUserData(false);
+            }
+        });
+    };
+
   useEffect(() => {
+/*      getIdUser();*/
     const onScroll = () => {
       if (window.scrollY < 50) {
         setScrolled(false);
@@ -94,20 +109,46 @@ const NavBar = (props) => {
                     key={index} title={item.title} link={item.link} submenu={item.submenu}/>
               ))
             }
-              <Link
-                  className="text-decoration-none m-auto  link-light " to={"/"}
-              >
-              <button className="btn btn-outline-light btnLog "
-              onClick={()=>{
-                  localStorage.setItem('userType','admin')
-                  localStorage.setItem('activeLink','dashboard')
+              {localStorage.getItem('idUser')>0?
+                <>
 
-                  props.typeUser("admin");
-              }}
-              >
-                  تسجيل الدخول
-              </button>
-              </Link>
+                  <Link
+                      className="text-decoration-none m-auto  link-light " to={"/home"}
+                  >
+                      <button className="btn btn-outline-light btnLog "
+                              onClick={()=>{
+                                  localStorage.setItem('idUser',0)
+                                  window.location.href='/home'
+                              }}
+                      >
+                          تسجيل خروج
+                      </button>
+                  </Link>
+                    <Link
+                        className="text-decoration-none m-auto  link-light " to={"/dashboard"}
+                    >
+                        <button className=" btn btn-outline-light btnLog "
+                                style={{marginRight:'1rem'}}
+                        >
+                            <BiSolidDashboard/>
+                        </button>
+                    </Link>
+                </>
+                  :
+                  <Link
+                      className="text-decoration-none m-auto  link-light " to={"/login"}
+                  >
+                      <button className="btn btn-outline-light btnLog "
+                              onClick={()=>{
+
+
+                              }}
+                      >
+                          تسجيل الدخول
+                      </button>
+                  </Link>
+              }
+
           </Nav>
 
             <span className="navbar-text me-lg-5">

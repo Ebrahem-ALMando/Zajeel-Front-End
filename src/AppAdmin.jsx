@@ -8,6 +8,8 @@ import "react-toastify/dist/ReactToastify.css";
 import Sidebar from "./Components/AdminDashboard/Sidebar";
 import MainContent from "./Components/AdminDashboard/MainContent";
 import Drivers from "./Components/AdminDashboard/Drivers/Drivers";
+import Regions from "./Components/AdminDashboard/Regions/Regions";
+import Message from "./Components/AdminDashboard/Message/Message";
 
 const AppAdmin = () => {
     return (
@@ -15,12 +17,12 @@ const AppAdmin = () => {
             <Sidebar />
             <ToastContainer />
             <Routes>
-                <Route path="/" element={<MainContent />} />
+
                 <Route path="/dashboard" element={<MainContent />} />
                 <Route path="/drivers" element={<Drivers />} />
-              {/*  <Route path="/message" element={<Message />} />
-                <Route path="/Enquiries" element={<Enquiries />} />
-                <Route path="/users" element={<Users />} />
+                <Route path="/regions" element={<Regions />} />
+                <Route path="/message" element={<Message />} />
+                {/*<Route path="/users" element={<Users />} />
                 <Route path="/students" element={<Student/>} />
                 <Route path="/services" element={<Services />} />
                 <Route

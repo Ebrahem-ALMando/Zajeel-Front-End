@@ -10,6 +10,11 @@ import "leaflet-routing-machine";
 import styles from "./Map.module.css";
 import stylesT from "./../Trips/Cards/CardTrips.module.css"
 import {Col, Container, Row} from "react-bootstrap";
+import axios from "axios";
+import {urlDomainApi} from "../../../URL_DomainApi";
+import {toast} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 const Map = () => {
     const mapRef = useRef();
@@ -19,51 +24,28 @@ const Map = () => {
     const [endPointX,setEndPointX]=useState("");
     const [beginPointY,setBeginPointY]=useState("");
     const [endPointY,setEndPointY]=useState("");
+    const [lastRoutingControl,setLastRoutingControl]=useState()
+
+
+    const [dataRegions,setDataRegions]=useState([]);
+
+
+
+    const getRegionsList = async () => {
+        try {
+            const response = await axios.get(`${urlDomainApi}/region`);
+            if (response.status === 200) {
+                setDataRegions(response.data.Regions);
+            } else {
+                toast.error('حدث خطأ في جلب قائمة المناطق');
+            }
+        } catch (error) {
+            toast.error('حدث خطأ في الاتصال بالخادم');
+        }
+    };
 
     useEffect(() => {
-    setTimeout(()=>{
-       const map = mapRef.current;
-        if(locStart.length>0){
-       /* if(beginPoint!=null&&endPoint!=null){*/
-
-
-       if (map != null) {
-           const startCoords = [beginPointX,beginPointY];
-           const endCoords =[endPointX,endPointY];
-
-           console.log(startCoords)
-           console.log(endCoords)
-           const routingControl = L.Routing.control({
-               waypoints: [
-                   L.latLng(startCoords[0], startCoords[1]),
-                   L.latLng(endCoords[0], endCoords[1])
-               ],
-               routeWhileDragging: true,
-               draggableWaypoints: false, // تعطيل تحريك المسار بعد رسمه
-               addWaypoints: false,
-               lineOptions: {
-                   styles: [
-                       {
-                           color: '#1d8cf8'
-                           , opacity: 1
-                           , weight: 4
-                       }
-                   ]
-               }
-           });
-
-           routingControl.addTo(map);
-           /*
-                      map.dragging.disable();
-                      map.touchZoom.disable();
-                      /!*  map.doubleClickZoom.disable();*!/
-                      map.scrollWheelZoom.disable();
-                      map.boxZoom.disable();
-                      map.keyboard.disable();*/
-
-       }
-       }
-   },1000)
+        getRegionsList();
 
         const customIcon = new L.icon({
             iconUrl: require('./Location map.png'),
@@ -79,15 +61,19 @@ const setLoc=()=>{
     setTimeout(()=>{
         const map = mapRef.current;
 
-        console.log(endPointX,endPointY)
-        console.log(beginPointX,beginPointY)
+
+
+
+
         if(locStart.length>0){
             setIsLoad(true);
 
             if (map != null) {
                 const startCoords = [beginPointX,beginPointY];
                 const endCoords =[endPointX,endPointY];
-
+                if(lastRoutingControl){
+                    map.removeControl(lastRoutingControl);
+                }
                 const routingControl = L.Routing.control({
                     waypoints: [
                         L.latLng(startCoords[0], startCoords[1]),
@@ -106,7 +92,7 @@ const setLoc=()=>{
                         ]
                     }
                 });
-
+                setLastRoutingControl(routingControl);
                 routingControl.addTo(map);
 
                 /*
@@ -118,35 +104,58 @@ const setLoc=()=>{
                            map.keyboard.disable();*/
 
             }
+        }else {
+            toast.error("حدث خطأ يرجى تحديد المنطقة بشكل صحيح");
         }
+
     },1000)
 }
 
-const print =()=>{
-    console.log(endPointX,endPointY)
-    console.log(beginPointX,beginPointY)
-}
+
     const setBeginPointLoc=async (e)=>{
+        if(e.target.value==="----"){
+            setLocStart('')
+        }else {
             const points = e.target.value.split(',');
 
             setBeginPointX(points[0])
-
             setBeginPointY(points[1])
+        }
+
+
+
+
 
        /*       setLoc()*/
       //  await  print();
-
     }
     const setEndPointLoc =  (e) => {
-        const points = e.target.value.split(',');
-          setEndPointX(points[0]);
-          setEndPointY(points[1]);
-        setLocStart("get")
+
+        if(e.target.value==="----"){
+            setLocStart('')
+        }else {
+            const points = e.target.value.split(',');
+
+            setEndPointX(points[0]);
+            setEndPointY(points[1]);
+            setLocStart("get")
+        }
+
 
 
 
     }
 
+    const options=dataRegions.map((region,index)=>{
+            return(
+                <option
+                    value={[`${region.point_x},${region.point_y}`]}
+
+                >
+                    {region.name}
+                </option>
+            )
+        })
     //
     //  يجب الانتباه الى تغيير المسار في select انا حاليا مكرر الحدث بدو ازالة
     //
@@ -180,24 +189,13 @@ const print =()=>{
                             >
 
 
-                                    <option>
+                                    <option >
                                         ----
                                     </option>
 
-                                <option
-                                    value={[[36.18778967433934, 36.72327671109137]]}
 
-                                >
-                                    سرمدا
-                                </option>
-                                <option>
-                                    ادلب
-                                </option>
-                                <option
-                                    value={[[36.58677554516146, 37.04643498605561]]}
-                                >
-                                    اعزاز
-                                </option>
+                                {options}
+
                             </select>
                         </Col>
                         <Col xl={6} className={`col-auto col-6 `}>
@@ -212,23 +210,10 @@ const print =()=>{
 
                                     }
                             >
-                                <option>
+                                <option >
                                     ----
                                 </option>
-                                <option
-                                    value={[[35.93044221577073, 36.63428119557299]]}
-
-                                >
-                                    ادلب
-                                </option>
-                                <option
-                                    value={[[36.58677554516146, 37.04643498605561]]}
-                                >
-                                    اعزاز
-                                </option>
-                                <option>
-                                    سرمدا
-                                </option>
+                                {options}
                             </select>
 
                         </Col>
@@ -256,7 +241,7 @@ const print =()=>{
                     title="نص جديد عند مرور المؤشر"
                     title="البداية"
                     icon={customIcon} className={styles.mark}  position={[35.93044221577073, 36.63428119557299]} />*/}
-                {isLoad?
+                {isLoad&&locStart.length>1?
                <>
                    <Marker position={[beginPointX,beginPointY]}/>
                    <Marker position={[endPointX,endPointY]} />

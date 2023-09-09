@@ -12,7 +12,7 @@ import { AiOutlinePieChart } from "react-icons/ai";
 
 import React, {useEffect, useState} from "react";
 import {SiGooglemessages} from "react-icons/si";
-import {BiCategoryAlt} from "react-icons/bi";
+import {BiCategoryAlt, BiLogIn} from "react-icons/bi";
 import styles from './Sidebar.module.css'
 import {FaLocationDot, FaMapLocationDot} from "react-icons/fa6";
 import {PiPathBold} from "react-icons/pi";
@@ -25,15 +25,15 @@ function Sidebar() {
     const [activeLink,setActiveLink]=useState('dashboard')
     useEffect(()=>{
         setIsPressed(localStorage.getItem('activeLink'))
-        /*getDateNow()*/
+        getDateNow()
     },[])
-    /*    const getDateNow=()=>{
+        const getDateNow=()=>{
             const timeElapsed = Date.now();
 
             const today = new Date(timeElapsed)
 
             setDate(today.toLocaleDateString());
-        }*/
+        }
 
     const handleMouseActiveLink = (link) => {
         setIsPressed(link);
@@ -102,7 +102,7 @@ function Sidebar() {
                         </Link>
                     </Linkurl>*/}
                     <Link  id={`${activeLink === "students" ? "active-link" : "lin"}`}
-                           className="text-decoration-none link-light" to="" >
+                           className="text-decoration-none link-light" to="/dashboard" >
                     <Linkurl
                         className={isPressed==="bass"?styles.selecct:null}
                         onClick={()=>{handleMouseActiveLink("bass")}}
@@ -116,7 +116,7 @@ function Sidebar() {
                     </Linkurl>
                     </Link>
                     <Link id={`${activeLink === "services" ? "active-link" : "lin"}`}
-                          className="text-decoration-none link-light" to="" >
+                          className="text-decoration-none link-light" to="/regions" >
                     <Linkurl
                         className={isPressed==="regions"?styles.selecct:null}
                         onClick={()=>{handleMouseActiveLink("regions")}}
@@ -130,7 +130,7 @@ function Sidebar() {
                     </Linkurl>
                     </Link>
                     <Link id={`${activeLink === "category_courses" ? "active-link" : "lin"}`}
-                          className="text-decoration-none link-light" to="" >
+                          className="text-decoration-none link-light" to="/dashboard" >
                     <Linkurl
                         className={isPressed==="positions"?styles.selecct:null}
                         onClick={()=>{handleMouseActiveLink("positions")}}
@@ -144,7 +144,7 @@ function Sidebar() {
                     </Linkurl>
                     </Link>
                     <Link id={`${activeLink === "courses" ? "active-link" : "lin"}`}
-                          className="text-decoration-none link-light" to="" >
+                          className="text-decoration-none link-light" to="/dashboard" >
                     <Linkurl
                         className={isPressed==="lines"?styles.selecct:null}
                         onClick={()=>{handleMouseActiveLink("lines")}}
@@ -172,7 +172,7 @@ function Sidebar() {
                     </Linkurl>
                     </Link>
                     <Link id={`${activeLink === "message" ? "active-link" : "lin"}`}
-                          className="text-decoration-none link-light" to="" >
+                          className="text-decoration-none link-light" to="/message" >
                     <Linkurl
                         onClick={()=>{handleMouseActiveLink("message")}}
 
@@ -186,6 +186,25 @@ function Sidebar() {
                             >الرسائل الواردة</h3>
 
                     </Linkurl>
+                    </Link>
+                    <Link id={`${activeLink === "message" ? "active-link" : "lin"}`}
+                          className="text-decoration-none link-light" to="/home" >
+                        <Linkurl
+                            onClick={()=>{handleMouseActiveLink("logout")
+                                localStorage.setItem('idUser',0)
+                                window.location.href='/home'
+                            }}
+
+                            className={isPressed==="logout"?styles.selecct:null}
+                        >
+                            <BiLogIn/>
+
+                            <h3
+                                onClick={()=>{setActiveLinkUrl("message")}}
+
+                            >تسجيل الخروج</h3>
+
+                        </Linkurl>
                     </Link>
                 </Links>
 

@@ -13,6 +13,7 @@
     "i18next": "^22.5.0",
     "i18next-browser-languagedetector": "^7.0.2",
     "leaflet": "^1.9.4",
+    "leaflet-easybutton": "^2.4.0",
     "leaflet-routing-machine": "^3.2.12",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.2",

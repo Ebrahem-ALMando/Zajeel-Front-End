@@ -29,23 +29,34 @@ import Intern from "./Components/TogetherPage/Intern/Intern";*/
 import Slider from "./Components/Home/SliderHome/Slider";
 
 import Home from "./Components/Home/Home";
-import {BrowserRouter} from "react-router-dom";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import AppAdmin from "./AppAdmin";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Login from "./Components/Login/Login/Login";
 function App() {
         const [isContactus,setIsContactus]=useState(false)
         const isContactusValue={isContactus,setIsContactus};
-        const [userType,setUserType]=useState("gust");
+        const [idUser,setIdUser]=useState(localStorage.getItem('idUser'));
         useEffect(()=>{
-            setUserType(localStorage.getItem('userType'))
+            setIdUser(localStorage.getItem('idUser'))
 
-        },[localStorage.getItem('userType')])
+        },[localStorage.getItem('idUser')])
   return (
     <>
-        {userType==="gust"?
+        {idUser?idUser==="0"?
 
             <ContactUSContext.Provider value={isContactusValue}>
-            <NavBar typeUser={setUserType}/>
-            <Home/>
+
+            <NavBar typeUser={idUser}/>
+                <ToastContainer />
+
+                <Routes>
+                    <Route  path="/home" element={<Home/>} />
+                    <Route  path="/" element={<Home/>} />
+                    <Route  path="/login" element={ <Login/>} />
+
+                </Routes>
             {/*<Slider/>*/}
 
         {/*    <CardTrips
@@ -88,7 +99,11 @@ function App() {
             <Footer />*/}
             </ContactUSContext.Provider>:
 
-                <AppAdmin />
+                <AppAdmin />:
+            <ContactUSContext.Provider value={isContactusValue}>
+                <NavBar typeUser={idUser}/>
+                <Home/>
+            </ContactUSContext.Provider>
 
         }
 

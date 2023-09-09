@@ -6,7 +6,7 @@ import axios from "axios";
 
 
 import UpdateDriver from "../Drivers/UpdateDriver";
-import DeleteDriver from "../Drivers/DeleteDricer";
+import DeleteDriver from "../Drivers/DeleteDriver";
 import {AiFillEdit} from "react-icons/ai";
 import {MdDeleteForever} from "react-icons/md";
 import {Modal} from "react-bootstrap";

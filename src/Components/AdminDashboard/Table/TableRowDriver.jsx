@@ -3,7 +3,7 @@ import ActionTableButtonsDriver from "./ActionTableButtonsDriver";
 
 
 
-const  TableRow=props=>{
+const  TableRowDriver= props=>{
     return(
         <tr>
             <th prop="row">
@@ -24,5 +24,5 @@ const  TableRow=props=>{
     )
 }
 
-export default TableRow
+export default TableRowDriver
 
