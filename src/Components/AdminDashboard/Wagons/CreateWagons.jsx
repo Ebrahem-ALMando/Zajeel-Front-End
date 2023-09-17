@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useState} from "react";
 import axios from "axios";
 import {toast} from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
@@ -9,61 +9,61 @@ import {AiOutlineUserAdd} from "react-icons/ai";
 import {urlDomainApi} from "../../../URL_DomainApi";
 import styles from '../Drivers/CreateDriver.module.css'
 import {Button, Modal} from "react-bootstrap";
-const UpdateRegion=props=>{
-    const [nameData, setNameData] = useState('');
-    const [pointXData, setPointXData] = useState('');
-    const [pointYData, setPointYData] = useState('');
+
+const CreateRegion=props=>{
+    const [typeData, setTypeData] = useState('');
+    const [modelData, setModelData] = useState('');
+    const [numberChairsData, setNumberChairsData] = useState('');
+    const [carNumberData, setCarNumberData] = useState('');
     const [noteData, setNoteData] = useState('');
     const [show, setShow] = useState(false);
 
-    useEffect(() => {
-        setNameData(props.Data.name);
-        setPointXData(props.Data.point_x);
-        setPointYData(props.Data.point_y);
-        setNoteData(props.Data.note);
-    }, []);
-    const inputRegionName = (event) => {
-        setNameData(event.target.value);
+
+    const inputWagonsType = (event) => {
+        setTypeData(event.target.value);
     };
-    const inputRegionPointX = (event) => {
-        setPointXData(event.target.value);
+    const inputWagonsModel = (event) => {
+        setModelData(event.target.value);
     };
-    const inputRegionPointY = (event) => {
-        setPointYData(event.target.value);
+    const inputWagonsNumberChairs = (event) => {
+        setNumberChairsData(event.target.value);
     };
-    const inputRegionNote = (event) => {
+    const inputWagonsCarNumber = (event) => {
+        setCarNumberData(event.target.value);
+    };
+    const inputWagonsNote = (event) => {
         setNoteData(event.target.value);
     };
     const SubmitHandler=(e)=>{
         e.preventDefault();
     }
+
     const validateInput=()=>{
-        if(nameData.length>0&&pointXData.length>0&&pointYData.length>0){
+
+        if(typeData.length>0&&modelData.length>0&&numberChairsData.length>0&&carNumberData.length>0){
+
             return true
         }
         else {
             return  false;
         }
     }
-    const updateRegionData=async ()=>{
+    const createWagonsData=async ()=>{
+
         if(validateInput()){
             //Submit Data
-            const updatedData = {
-                // اجعل هنا البيانات التي تريد تحديثها
-
-                name: nameData,
-                point_x: pointXData,
-                point_y:pointYData,
+            await axios.post(`${urlDomainApi}/wagon`,{
+                type: typeData,
+                model: modelData,
+                car_number:carNumberData,
+                number_chairs:numberChairsData,
                 note:noteData,
-            };
-            await axios.post(`${urlDomainApi}/region/${props.Data.id}`, updatedData)
-
-              .then((response)=>{
+            }).then((response)=>{
                 if(response.status===200){
-                    toast.success("تم التعديل بنجاح");
-                    getNewRegionData();
+                    toast.success("تم الانشاء بنجاح");
+                    getNewWagonsData();
                     handleClose();
-
+                    clearData();
                 }else {
                     toast.error("حدث خطأ يرجى اعادة المحاولة");
                 }
@@ -72,6 +72,13 @@ const UpdateRegion=props=>{
         else {
             toast.error("يرجى ادخال جميع البيانات");
         }
+    }
+    const clearData=()=>{
+        setTypeData('')
+        setModelData('')
+        setNumberChairsData('')
+        setCarNumberData('')
+        setNoteData('')
     }
     const validateInputNumberX=(event)=> {
         // القيمة المدخلة من المستخدم
@@ -105,22 +112,34 @@ const UpdateRegion=props=>{
             document.getElementById('pointY').value=inputValue
         }
     }
-    const getNewRegionData = () => {
-        props.getNewRegionsData();
+
+    const getNewWagonsData = () => {
+        props.getNewWagonsData();
     };
-    const handleClose = () => {
-        props.handleClose();
-    };
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
     return(
         <>
 
+            <div className={`row text-right w-100 mb-3 pb-3 ${styles.btnCreate}`}>
 
+                <button  type="button" className= {`${stylesTBUT.tripButton} `}
+                         onClick={handleShow}   >
+                    عربة جديدة
+                    <AiOutlineUserAdd/>
+                </button>
+
+            </div>
+            {/* <div className="modal fade" id={"createModel"} tabIndex="-1" aria-labelledby="exampleModalLabel" >*/}
+            <Modal  show={show} onHide={handleClose}>
+
+                <div className={`modal-content ${styles.modalContent}`}>
                     <div className="modal-content">
                         <div className="modal-header">
                             <button type="button" className={`btn-close ${styles.btnClose}`} data-bs-dismiss="modal" aria-label="Close" onClick={handleClose}></button>
                         </div>
                         <div className="text-center">
-                            <h5 className="modal-title text-black" id="exampleModalLabel">إضافة منظقة</h5>
+                            <h5 className="modal-title text-black" id="exampleModalLabel">إضافة عربة</h5>
                         </div>
                     </div>
 
@@ -129,22 +148,35 @@ const UpdateRegion=props=>{
                         <form className="form" onSubmit={SubmitHandler}>
                             <div className="row g-3 align-items-center" style={{ marginBottom: '1rem' }}>
                                 <div className="col-md-4">
-                                    <label htmlFor="employeeName" className="col-form-label">اسم المنظقة</label>
+                                    <label htmlFor="employeeName" className="col-form-label">النوع</label>
                                 </div>
                                 <div className="col-md-8">
                                     <input
                                         type="text"
                                         className="form-control"
                                         id="employeeName"
-                                        value={nameData??" "}
-                                        placeholder="الاسم هنا"
-                                        onChange={inputRegionName}
+                                        placeholder="النوع هنا"
+                                        onChange={inputWagonsType}
                                     />
                                 </div>
                             </div>
                             <div className="row g-3 align-items-center" style={{ marginBottom: '1rem' }}>
                                 <div className="col-md-4">
-                                    <label htmlFor="employeeSalary" className="col-form-label">النقطة الافقية</label>
+                                    <label htmlFor="employeeName" className="col-form-label">الموديل</label>
+                                </div>
+                                <div className="col-md-8">
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        id="employeeName"
+                                        placeholder="الموديل"
+                                        onChange={inputWagonsModel}
+                                    />
+                                </div>
+                            </div>
+                            <div className="row g-3 align-items-center" style={{ marginBottom: '1rem' }}>
+                                <div className="col-md-4">
+                                    <label htmlFor="employeeSalary" className="col-form-label">عدد المقاعد</label>
                                 </div>
                                 <div className="col-md-8">
                                     <input
@@ -152,9 +184,8 @@ const UpdateRegion=props=>{
                                         className="form-control"
                                         id="pointX"
                                         onInput={validateInputNumberX}
-                                        value={pointXData??" "}
-                                        placeholder="المحور الافقي (أرقام فقط)"
-                                        onChange={inputRegionPointX}
+                                        placeholder="عدد المقاعد (أرقام فقط)"
+                                        onChange={inputWagonsNumberChairs}
 
                                     />
 
@@ -163,19 +194,16 @@ const UpdateRegion=props=>{
                             </div>
                             <div className="row g-3 align-items-center" style={{ marginBottom: '1rem' }}>
                                 <div className="col-md-4">
-                                    <label htmlFor="experience" className="col-form-label">النقطة العمودية</label>
+                                    <label htmlFor="experience" className="col-form-label">رقم العربة</label>
                                 </div>
                                 <div className="col-md-8">
-
-
                                     <input
                                         type="text"
                                         className="form-control"
                                         id="pointY"
-                                        value={pointYData??" "}
                                         onInput={validateInputNumberY}
-                                        placeholder="المحور العمودي (أرقام فقط)"
-                                        onChange={inputRegionPointY}
+                                        placeholder="رقم العربة (أرقام فقط)"
+                                        onChange={inputWagonsCarNumber}
 
                                     />
 
@@ -189,9 +217,8 @@ const UpdateRegion=props=>{
                                     <textarea
                                         className="form-control"
                                         id="description"
-                                        value={noteData??" "}
                                         placeholder="الملاحظات هنا"
-                                        onChange={inputRegionNote}
+                                        onChange={inputWagonsNote}
                                     />
                                 </div>
                             </div>
@@ -201,9 +228,9 @@ const UpdateRegion=props=>{
                                     className={stylesTBUT.tripButton}
 
                                     data-bs-dismiss="modal"
-                                    onClick={updateRegionData}
+                                    onClick={createWagonsData}
                                 >
-                                    تعديل
+                                    انشاء
                                 </button>
                             </div>
                         </form>
@@ -213,9 +240,11 @@ const UpdateRegion=props=>{
                         <button type="button" className="btn btn-dark w-100" data-bs-dismiss="modal" onClick={handleClose}>اغلاق</button>
 
                     </div>
+                </div>
 
+            </Modal>
         </>
     )
 }
 
-export default UpdateRegion;
+export default CreateRegion;

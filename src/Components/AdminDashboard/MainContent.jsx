@@ -5,32 +5,114 @@ import Navbar from "./Navbar";
 import ViewCardInfo from "./ViewCardInfo";
 import Info from "./Info";
 import LastAddItem from "./LastAddItem";
+import axios from "axios";
+import {urlDomainApi} from "../../URL_DomainApi";
+import {toast} from "react-toastify";
+import Wagons from "./Wagons/Wagons";
+import {BiLoader} from "react-icons/bi";
 /*import Info from "./Info";
 import ViewCardInfo from "./viewCardInfo";
 import HomePage from "./GohomePage";
 import Members from "./Members";
 import { themeColor2} from "../../utils";
 import Students from "./Students";*/
-function MainContent() {
+const MainContent=(props)=> {
+    const [upDrivers,setUpDrivers]=useState([])
+    const [upWagons,setUpWagons]=useState([])
+    const [countMessage,setCountMessage]=useState([])
+    const [countDriver,setCountDriver]=useState([])
+    const [countWagons,setCountWagons]=useState([])
+    const [countRegion,setCountRegion]=useState([])
+    const [countLine,setCountLine]=useState([])
+    const [isLoad,setIsLoad]=useState(false)
+    const getTowUpDriver=async ()=>{
+        await axios.get(`${urlDomainApi}/driver/up`)
+            .then((response)=>{
+            if(response.status===200){
+                setUpDrivers(response.data.drivers)
+            }
+        })
+    }
+    const getTowUpWagons=async ()=>{
+        await axios.get(`${urlDomainApi}/wagon/up`)
+            .then((response)=>{
+            if(response.status===200){
+                setUpWagons(response.data.wagons)
+            }
+        })
+    }
+    const getCountMessage=async ()=>{
+        await axios.get(`${urlDomainApi}/message/count`)
+            .then((response)=>{
+            if(response.status===200){
+                setCountMessage(response.data.messages)
+            }
+        })
+    }
+    const getCountDriver=async ()=>{
+        await axios.get(`${urlDomainApi}/driver/count`)
+            .then((response)=>{
+            if(response.status===200){
+                setCountDriver(response.data.drivers)
+            }
+        })
+    }
+    const getCountWagons=async ()=>{
+        await axios.get(`${urlDomainApi}/wagons/count`)
+            .then((response)=>{
+            if(response.status===200){
+                setCountWagons(response.data.wagons)
+            }
+        })
+    }
+    const getCountRegion=async ()=>{
+        await axios.get(`${urlDomainApi}/region/count`)
+            .then((response)=>{
+            if(response.status===200){
+                setCountRegion(response.data.Regions)
+            }
+        })
+    }
+    const getCountLine=async ()=>{
+        await axios.get(`${urlDomainApi}/line/count`)
+            .then((response)=>{
+            if(response.status===200){
+                setCountLine(response.data.line)
+            }
+        })
+    }
+    useEffect(() => {
+        getTowUpDriver()
+        getTowUpWagons()
+        getCountMessage()
+        getCountDriver()
+        getCountWagons()
+        getCountRegion()
+        getCountLine()
+      setTimeout(()=>{
+          setIsLoad(true)
+      },1000)
+
+    }, []);
     return(
         <Container>
-            <Navbar />
-            <SubContainer>
+            <Navbar nameUser={props.nameUser}/>
+            {isLoad?        <SubContainer>
                 <SectionOne>
                     <ColumnOne1>
                         <ViewCardInfo title={"الرسائل الواردة"}
-                                      /*count={countUsers||"0"}*/
-                                      count={500||"0"}
+                                      count={countMessage||"0"}
+
                                       time={"  منذ اخر شهر"}
                                       increment={"10%"}
                         />
                         <Info
                             /*countSectionTow={countEnquiries}*/
-                            countSectionTow={100}
+                            countSectionTow={countWagons}
                             titleSectionTow={'العربات'}
                             timeSectionTow={"هذا الاسبوع 10%"}
                             /*countSectionOne={countMessage}*/
-                            countSectionOne={200}
+                            countSectionOne={countDriver}
                             timeSectionOne={"هذا الشهر 20%"}
                             titleSectionOne={"السائقين"}
                             badgeOne={"قديمة"}
@@ -42,8 +124,11 @@ function MainContent() {
                     <ColumnTwo1>
                         <TitleText>المضافين حديثا </TitleText>
                         <LastAddItem
-                            dataDrivers={['']}
-                            viewItem={'عرض جميع الاعضاء'}
+                            setion={'D'}
+                            link={'/drivers'}
+                            nameImg={'driver.png'}
+                            data={upDrivers}
+                            viewItem={'عرض جميع السائقين'}
                         />
                     </ColumnTwo1>
                 </SectionOne>
@@ -55,10 +140,10 @@ function MainContent() {
                                       bgcolor={"#9b67e5"}
                         />
                         <Info
-                            countSectionTow={100}
+                            countSectionTow={countLine}
                             timeSectionTow={"هذا الشهر 20%"}
                             titleSectionTow={"الخطوط"}
-                            countSectionOne={200}
+                            countSectionOne={countRegion}
                             timeSectionOne={"هذا الشهر 5%"}
                             titleSectionOne={"المناطق "}
                             badgeOne={"بعيدة"}
@@ -68,7 +153,10 @@ function MainContent() {
                     </ColumnOne1>
                     <ColumnTwo1>
                         <LastAddItem
-                            dataDrivers={['']}
+                            setion={'W'}
+                            link={'/wagons'}
+                            nameImg={'Bus.png'}
+                            data={upWagons}
                             viewItem={'عرض جميع العربات'}
                         />
                     </ColumnTwo1>
@@ -83,18 +171,55 @@ function MainContent() {
                     {/*</ColumnOne2>*/}
                     <ColumnTwo2>
                         <TitleText>الصفحة الرئيسية</TitleText>
-                       {/* <HomePage/>*/}
+                        {/* <HomePage/>*/}
 
                     </ColumnTwo2>
 
                 </SectionTwo>
 
-            </SubContainer>
+            </SubContainer>:
+
+            <H1>
+                يتم تحميل البيانات
+              <Icon>
+                  <BiLoader/>
+              </Icon>
+            </H1>
+
+            }
+
 
         </Container>
     )
 }
+const H1=styled.h1`
+position: relative;
+ top: 20%;
+  text-align: center;
+  background:linear-gradient(90deg, #7c33d3,#254eb1);
+  padding: 50px;
+  border-radius: 20px;
+  opacity: 0.8;
+`
+const Icon=styled.span`
+  svg {
+    margin-right: 10px;
+    width: 50px;
+    height: 50px;
+    vertical-align: top;
+    animation: image 1s linear infinite; /* زمن أطول لدوران أكثر سلاسة */
+  }
 
+  @keyframes image {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+`
 const Container = styled.div`
   width: 80%;
   color: white;
@@ -108,7 +233,6 @@ const Container = styled.div`
     margin: 1rem 0 0 0;
   }
 `;
-
 const SubContainer = styled.div`
   margin: 0.5rem 0;
   height: 80%;

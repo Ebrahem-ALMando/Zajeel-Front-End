@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import { FiSearch } from "react-icons/fi";
-function Navbar() {
+function Navbar(props) {
     return (
         <NavbarContainer>
             <Text>
                 اهلا بك
-                <span> ابراهيم </span>
+                <span> {props.nameUser} </span>
             </Text>
 
         </NavbarContainer>

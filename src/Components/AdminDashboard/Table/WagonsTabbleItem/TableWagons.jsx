@@ -1,11 +1,14 @@
 import React, {useEffect, useState} from "react";
-import TableRowDriver from "./TableRowDriver";
+
 /*import CreateModal from "../users/CreateModal";*/
 import {FiSearch} from "react-icons/fi";
 import styled from "styled-components";
-import styles from './Table.module.css'
+import styles from './../Table.module.css'
+import TableRowWagons from "./TableRowWagons";
 
-const  Table=(props)=>{
+
+
+const  TableWagons=(props)=>{
     return(
         <table className={`table  ${styles.tableData}`}
                style={{maxWidth:'95%' ,marginTop:'3rem',marginRight:'2%',marginLeft:'3%'}}>
@@ -17,8 +20,8 @@ const  Table=(props)=>{
                 <th scope="col">{props.Col2}</th>
                 <th scope="col">{props.Col3}</th>
                 <th scope="col">{props.Col4}</th>
-
-            {/*    <th scope="col">{props.Col5}</th>
+                <th scope="col">{props.Col5}</th>
+                {/*    <th scope="col">{props.Col5}</th>
                 <th scope="col">{props.Col6}</th>*/}
                 <th style={{textAlign:'center'}} scope="col">تحكم</th>
             </tr>
@@ -28,9 +31,9 @@ const  Table=(props)=>{
                 // props.data==="لا بوجد بيانات متطابقة"?"":
                 props.data.map((item,index)=>{
                     return (
-                        <TableRowDriver
-                            getNewDriverData={props.getNewDriverData}
-                            getNewRegionsData={props.getNewRegionsData}
+
+                        <TableRowWagons
+                            getNewWagonsData={props.getNewWagonsData}
                             Data={item} key={index}/>
                     )
                 })
@@ -43,4 +46,4 @@ const  Table=(props)=>{
 
 }
 
-export default Table;
+export default TableWagons;

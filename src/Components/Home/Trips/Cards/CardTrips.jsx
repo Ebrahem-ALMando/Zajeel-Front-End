@@ -2,7 +2,8 @@ import React, {useEffect} from 'react'
 import styles from "./CardTrips.module.css"
 import {Card, Col} from "react-bootstrap";
 import {FaLocationDot} from "react-icons/fa6";
-const CardTrips = ({ title, imageName, description }) => {
+import {Link} from "react-router-dom";
+const CardTrips = ({ title, imageName, description,price }) => {
 useEffect(()=>{
     document.querySelectorAll('.modal-trigger').forEach(image => {
         image.addEventListener('click', function () {
@@ -54,9 +55,18 @@ useEffect(()=>{
                   <Card.Text className={`${styles.cardText}`}>
                       {description}
                   </Card.Text>
+
+                 <h3 style={{color:'#f3eee7'}}>
+                     {price}
+
+                 </h3>
+
+                  <Link
+                        className="text-decoration-none link-light" to="/trip" >
                   <button className={`${styles.tripButton}  `}>
                       معرفة المزيد
                   </button>
+                  </Link>
               </Card.Body>
           </Card>
       </Col>

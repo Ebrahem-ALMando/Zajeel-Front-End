@@ -14,6 +14,7 @@ import axios from "axios";
 import {urlDomainApi} from "../../../URL_DomainApi";
 import {toast} from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import positions from "../../AdminDashboard/Positions/Positions";
 
 
 const Map = () => {
@@ -25,6 +26,8 @@ const Map = () => {
     const [beginPointY,setBeginPointY]=useState("");
     const [endPointY,setEndPointY]=useState("");
     const [lastRoutingControl,setLastRoutingControl]=useState()
+    const [dataPosition,setDataPosition]=useState([]);
+    const [nameLine,setNameLine]=useState('');
 
 
     const [dataRegions,setDataRegions]=useState([]);
@@ -32,6 +35,7 @@ const Map = () => {
 
 
     const getRegionsList = async () => {
+
         try {
             const response = await axios.get(`${urlDomainApi}/region`);
             if (response.status === 200) {
@@ -46,7 +50,7 @@ const Map = () => {
 
     useEffect(() => {
         getRegionsList();
-
+        getPositionList();
         const customIcon = new L.icon({
             iconUrl: require('./Location map.png'),
             iconRetinaUrl:require('./Location map.png'),// مسار الأيقونة الخاصة بك
@@ -94,6 +98,10 @@ const setLoc=()=>{
                 });
                 setLastRoutingControl(routingControl);
                 routingControl.addTo(map);
+               let c1= document.getElementById('begin').value;
+               let c2= document.getElementById('end').value;
+                console.log(c1+c2)
+                setNameLine(c1+c2)
 
                 /*
                            map.dragging.disable();
@@ -120,6 +128,8 @@ const setLoc=()=>{
 
             setBeginPointX(points[0])
             setBeginPointY(points[1])
+
+
         }
 
 
@@ -130,6 +140,7 @@ const setLoc=()=>{
       //  await  print();
     }
     const setEndPointLoc =  (e) => {
+
 
         if(e.target.value==="----"){
             setLocStart('')
@@ -146,6 +157,18 @@ const setLoc=()=>{
 
     }
 
+    const getPositionList = async () => {
+        try {
+            const response = await axios.get(`${urlDomainApi}/position`);
+            if (response.status === 200) {
+                setDataPosition(response.data.position);
+            } else {
+                toast.error('حدث خطأ في جلب قائمة المواقف');
+            }
+        } catch (error) {
+            toast.error('حدث خطأ في الاتصال بالخادم');
+        }
+    };
     const options=dataRegions.map((region,index)=>{
             return(
                 <option
@@ -184,7 +207,9 @@ const setLoc=()=>{
                             <p className={`${styles.textFilter} `}>
                                 منطقة النهاية
                             </p>
-                            <select className={`${styles.compoFilter} `} onInput={setEndPointLoc}
+                            <select
+                                id={'begin'}
+                                className={`${styles.compoFilter} `} onInput={setEndPointLoc}
 
                             >
 
@@ -202,7 +227,9 @@ const setLoc=()=>{
                             <p className={`${styles.textFilter} `}>
                                 منطقة البداية
                             </p>
-                            <select className={`${styles.compoFilter} `}
+                            <select
+                                id={'end'}
+                                className={`${styles.compoFilter} `}
 
                                     onInput={
 
@@ -245,8 +272,19 @@ const setLoc=()=>{
                <>
                    <Marker position={[beginPointX,beginPointY]}/>
                    <Marker position={[endPointX,endPointY]} />
-                  {/* <Marker position={[36.58122743179597, 37.03300248335753]} />
 
+                   {dataPosition.map((item)=>{
+                    return(
+                        <>
+                            {nameLine==='36.19591008505874,36.73238643664288435.928713797204914,36.6406145139876'?
+                                <Marker position={[item.point_x,item.point_y]} />:null
+                            }
+                        </>
+
+                    )
+                   })}
+                  {/* <Marker position={[36.58122743179597, 37.03300248335753]} />
+                    
                    <Marker position={[36.56654540726946, 37.00442086395486]} />
                    <Marker position={[36.45487395709631, 37.03616297883987]} />*/}
                </>

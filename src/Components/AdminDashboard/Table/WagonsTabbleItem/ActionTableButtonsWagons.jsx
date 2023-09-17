@@ -6,12 +6,12 @@ import axios from "axios";
 import {AiFillEdit} from "react-icons/ai";
 import {MdDeleteForever} from "react-icons/md";
 import {Modal} from "react-bootstrap";
-import UpdateRegion from "../../Regions/UpdateRegion";
-import DeleteRegion from "../../Regions/DeleteRegion";
+import DeleteWagons from "../../Wagons/DeleteWagons";
+import UpdateWagons from "../../Wagons/UpdateWagons";
 
 
-const ActionTableButtonsRegions=(props)=>{
 
+const ActionTableButtonsWagons=(props)=>{
 
     const [show, setShow] = useState(false);
     const [showDelete, setShowDelete] = useState(false);
@@ -33,8 +33,8 @@ const ActionTableButtonsRegions=(props)=>{
                 <AiFillEdit />
             </button>
             <Modal  show={show} onHide={handleClose}>
-                <UpdateRegion
-                    getNewRegionsData={props.getNewRegionsData}
+                <UpdateWagons
+                    getNewWagonsData={props.getNewWagonsData}
                     handleClose={handleClose} Data={props.Data}/>
             </Modal>
 
@@ -52,8 +52,8 @@ const ActionTableButtonsRegions=(props)=>{
 
                 <MdDeleteForever/></button>
             <Modal  show={showDelete} onHide={handleCloseDelete}>
-                <DeleteRegion
-                    getNewRegionsData={props.getNewRegionsData}
+                <DeleteWagons
+                    getNewWagonsData={props.getNewWagonsData}
                     handleClose={handleCloseDelete} Data={props.Data}/>
             </Modal>
 
@@ -63,5 +63,5 @@ const ActionTableButtonsRegions=(props)=>{
 
 
 
-export  default ActionTableButtonsRegions;
+export  default ActionTableButtonsWagons;
 

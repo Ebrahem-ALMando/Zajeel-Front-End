@@ -34,6 +34,7 @@ import AppAdmin from "./AppAdmin";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Login from "./Components/Login/Login/Login";
+import Trip from "./Components/Home/Trips/ShowTrips/ShowTrips/Trip";
 function App() {
         const [isContactus,setIsContactus]=useState(false)
         const isContactusValue={isContactus,setIsContactus};
@@ -55,6 +56,7 @@ function App() {
                     <Route  path="/home" element={<Home/>} />
                     <Route  path="/" element={<Home/>} />
                     <Route  path="/login" element={ <Login/>} />
+                    <Route  path="/trip" element={ <Trip/>} />
 
                 </Routes>
             {/*<Slider/>*/}

@@ -18,7 +18,7 @@ import {FaLocationDot, FaMapLocationDot} from "react-icons/fa6";
 import {PiPathBold} from "react-icons/pi";
 import Badge from "./Badge";
 
-function Sidebar() {
+function Sidebar(props) {
     const [isPressed, setIsPressed] = useState('dashboard');
 
     const [date,setDate]=useState('');
@@ -49,8 +49,8 @@ function Sidebar() {
     return (
         <Container className="Cn " >
             <ProfileContainer>
-           {/*     <Avatar src={myphot} />*/}
-                <Name>إبراهيم المندو</Name>
+                <Avatar src="/assets/img/admin.png" />
+                <Name>{props.nameUser}</Name>
 
                 <Badge
                     className={"btn btn-outline-light"}
@@ -102,7 +102,7 @@ function Sidebar() {
                         </Link>
                     </Linkurl>*/}
                     <Link  id={`${activeLink === "students" ? "active-link" : "lin"}`}
-                           className="text-decoration-none link-light" to="/dashboard" >
+                           className="text-decoration-none link-light" to="/wagons" >
                     <Linkurl
                         className={isPressed==="bass"?styles.selecct:null}
                         onClick={()=>{handleMouseActiveLink("bass")}}
@@ -130,7 +130,7 @@ function Sidebar() {
                     </Linkurl>
                     </Link>
                     <Link id={`${activeLink === "category_courses" ? "active-link" : "lin"}`}
-                          className="text-decoration-none link-light" to="/dashboard" >
+                          className="text-decoration-none link-light" to="/positions" >
                     <Linkurl
                         className={isPressed==="positions"?styles.selecct:null}
                         onClick={()=>{handleMouseActiveLink("positions")}}
@@ -144,7 +144,7 @@ function Sidebar() {
                     </Linkurl>
                     </Link>
                     <Link id={`${activeLink === "courses" ? "active-link" : "lin"}`}
-                          className="text-decoration-none link-light" to="/dashboard" >
+                          className="text-decoration-none link-light" to="/lines" >
                     <Linkurl
                         className={isPressed==="lines"?styles.selecct:null}
                         onClick={()=>{handleMouseActiveLink("lines")}}

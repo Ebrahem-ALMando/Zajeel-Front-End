@@ -6,12 +6,10 @@ import axios from "axios";
 import {AiFillEdit} from "react-icons/ai";
 import {MdDeleteForever} from "react-icons/md";
 import {Modal} from "react-bootstrap";
-import UpdateRegion from "../../Regions/UpdateRegion";
-import DeleteRegion from "../../Regions/DeleteRegion";
+import DeleteLine from "../../Lines/DeleteLine";
 
 
-const ActionTableButtonsRegions=(props)=>{
-
+const ActionTableButtonsLines=(props)=>{
 
     const [show, setShow] = useState(false);
     const [showDelete, setShowDelete] = useState(false);
@@ -33,14 +31,10 @@ const ActionTableButtonsRegions=(props)=>{
                 <AiFillEdit />
             </button>
             <Modal  show={show} onHide={handleClose}>
-                <UpdateRegion
-                    getNewRegionsData={props.getNewRegionsData}
-                    handleClose={handleClose} Data={props.Data}/>
+             {/*   <UpdatePosition
+                    getNewLinesData={props.getNewLinesData}
+                    handleClose={handleClose} Data={props.Data}/>*/}
             </Modal>
-
-
-
-
             {/* Btn Delete*/}
             <button   style={{margin:'1%'}} type="button" className="btn btn-danger"
 
@@ -52,8 +46,8 @@ const ActionTableButtonsRegions=(props)=>{
 
                 <MdDeleteForever/></button>
             <Modal  show={showDelete} onHide={handleCloseDelete}>
-                <DeleteRegion
-                    getNewRegionsData={props.getNewRegionsData}
+                <DeleteLine
+                    getNewLinesData={props.getNewLinesData}
                     handleClose={handleCloseDelete} Data={props.Data}/>
             </Modal>
 
@@ -63,5 +57,5 @@ const ActionTableButtonsRegions=(props)=>{
 
 
 
-export  default ActionTableButtonsRegions;
+export  default ActionTableButtonsLines;
 

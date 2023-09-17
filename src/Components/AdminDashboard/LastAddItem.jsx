@@ -1,27 +1,35 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styled from "styled-components";
 
 import {Link} from "react-router-dom";
 
 function LastAddItem(props) {
+
     return (
         <YourMembers>
-            {props.dataDrivers.map((member,index)=>{
+            {props.data.map((member,index)=>{
                 return(
                     <React.Fragment key={index}>
                         <Member>
                             <Avatar>
-                                <img src={''} alt="" />
+                                <img src={`/assets/img/${props.nameImg}`} alt="" />
                             </Avatar>
                             <Detail>
-                                <Title>{member.name}</Title>
-                                <SubTitle>{member.email}</SubTitle>
+                                <Title>{props.setion==='D'?member.full_name:member.type}</Title>
+                                <SubTitle>{`${props.setion==='D'?"الخبرة :"+member.experience+" عام " :" رقم العربة: " +member.car_number} `}</SubTitle>
                             </Detail>
                         </Member>
                     </React.Fragment>)
             })}
             <Link id="lin"
-                  className="text-decoration-none link-light" to="/users" >
+                  className="text-decoration-none link-light" to={props.link}
+            onClick={()=>{
+                localStorage.setItem('activeLink',props.link);
+
+            }
+
+            }
+            >
                 <AllMembers>{props.viewItem}</AllMembers>
             </Link>
         </YourMembers>
@@ -54,6 +62,7 @@ const Member = styled.div`
 `;
 const Avatar = styled.div`
   img {
+    margin-left: 50px;
     height: 4rem;
     width: 4rem;
     border-radius: 4rem;
