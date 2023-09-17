@@ -1,5 +1,5 @@
 {
-  "name": "quaim-global",
+  "name": "Zajeel-App",
   "homepage": "https://creativity-free-platform.000webhostapp.com/",
   "version": "0.1.0",
   "private": true,
@@ -10,15 +10,14 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.5.0",
     "bootstrap": "^5.2.3",
-    "i18next": "^22.5.0",
-    "i18next-browser-languagedetector": "^7.0.2",
+
     "leaflet": "^1.9.4",
     "leaflet-easybutton": "^2.4.0",
     "leaflet-routing-machine": "^3.2.12",
     "react": "^18.2.0",
     "react-bootstrap": "^2.7.2",
     "react-dom": "^18.2.0",
-    "react-i18next": "^12.3.1",
+
     "react-icons": "^4.10.1",
     "react-leaflet": "^4.2.1",
     "react-router-dom": "^6.12.0",

@@ -14,6 +14,12 @@ const Positions=props=>{
     const [dataPosition,setDataPosition]=useState([]);
     const [dataPositionSE,setDataPositionSE]=useState([]);
     const [isSearch,setIsSearch]=useState(false);
+<<<<<<< HEAD
+
+
+
+=======
+>>>>>>> f69e904ad41f1bc194e9cddc51b24bd5e37e38f1
     /*   const [textSearch,setTextSearch]=useState('');*/
 
     useEffect(() => {

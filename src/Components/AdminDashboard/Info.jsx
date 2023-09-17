@@ -30,19 +30,19 @@ function Info(props) {
                         </InfoContainer>
                     </Row>
                     <Row justify>
-                        <Link to={props.url}   className="text-decoration-none link-light">
+                   {/*     <Link to={props.url}   className="text-decoration-none link-light">*/}
                             <Badge
                                 className={stylesBD.btnInfoBadge}
                                 text={props.badgeOne}  />
 
-                        </Link>
-                        <Link to={props.url}   className="text-decoration-none link-light">
+                     {/*   </Link>*/}
+                        {/*<Link to={props.url}   className="text-decoration-none link-light">*/}
 
                             <Badge
                                 className={stylesBD.btnInfoBadge}
 
                                 text={props.badgeTow}  />
-                        </Link>
+           {/*             </Link>*/}
                     </Row>
                 </CardContent>
             </Card>

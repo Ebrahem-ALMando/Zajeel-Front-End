@@ -117,7 +117,7 @@ const MainContent=(props)=> {
                             titleSectionOne={"السائقين"}
                             badgeOne={"قديمة"}
                             badgeTow={"جديدة"}
-                            url={"/Enquiries"}
+                            url={"/"}
                         />
 
                     </ColumnOne1>

@@ -2,7 +2,7 @@ import React from 'react'
 
 import {Col, Container, Row} from "react-bootstrap";
 import styles from './Trips.module.css'
-import CardCA from "../../PortfolioPage/ValueProposition/Capability Development/Body/CardCA";
+
 import CardTrips from "./Cards/CardTrips";
 const Trips = () => {
   return (
